@@ -48,9 +48,12 @@
     } else if (password.value == null || password.value == '') {
       info.innerHTML = 'Please specify a password.';
     } else {
+      var safeEmail = encodeURI(email.value);
+      var safePassword = encodeURI(password.value);
+
       var input = {
-        email: email.value,
-        password: password.value
+        email: safeEmail,
+        password: safePassword
       };
       lambda.invoke({
         FunctionName: 'LambdAuthLogin',

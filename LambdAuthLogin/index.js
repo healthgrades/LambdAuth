@@ -3,7 +3,16 @@ console.log('Loading function');
 // dependencies
 var AWS = require('aws-sdk');
 var crypto = require('crypto');
-var config = require('./config.json');
+
+if( process.env.configLocation ) {
+	AWS.config.loadFromPath('./aws-creds.json');
+	var config = require( process.env.configLocation);
+}
+else {
+	var config = require('./config')
+}
+
+
 
 // Get reference to AWS clients
 var dynamodb = new AWS.DynamoDB();

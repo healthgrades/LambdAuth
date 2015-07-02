@@ -21,23 +21,27 @@
   </div>
   <script>
   var info = document.getElementById('info');
-  function getUrlParams() {
-    var p = {};
-    var match,
-      pl     = /\+/g,  // Regex for replacing addition symbol with a space
-      search = /([^&=]+)=?([^&]*)/g,
-      decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
-      query  = window.location.search.substring(1);
+  function parseQueryString( queryString ) {
+    var params = {}, queries, temp, i, l;
 
-    while (match = search.exec(query))
-      p[decode(match[1])] = decode(match[2]);
-    return p;
-  }
+    // Split into key/value pairs
+    queries = queryString.split("&");
+
+    // Convert the array of strings into an object
+    for ( i = 0, l = queries.length; i < l; i++ ) {
+      temp = queries[i].split('=');
+      params[temp[0]] = temp[1];
+    }
+
+    return params;
+  };
   function init() {
-    var urlParams = getUrlParams();
+    var urlParams = parseQueryString(window.location.search);
     if (!('email' in urlParams) || !('verify' in urlParams)) {
       info.innerHTML = 'Please specify email and verify token in the URL.';
     } else {
+
+
       var input = {
         email: urlParams['email'],
         verify: urlParams['verify']

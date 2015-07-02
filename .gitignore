@@ -3,3 +3,5 @@ iam/edit/*
 www/edit/*
 config.json
 .idea
+aws-creds.json
+node_modules

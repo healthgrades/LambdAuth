@@ -1,0 +1,23 @@
+{
+  "name": "lambda-auth",
+  "version": "1.0.0",
+  "description": "A sample authentication service implemented with a server-less architecture, using [AWS Lambda](http://aws.amazon.com/lambda/) to host and execute the code and [Amazon DynamoDB](http://aws.amazon.com/dynamodb/) as persistent storage. This provides a cost-efficient solution that is scalable and highly available.",
+  "main": "lambdaRunner.js",
+  "scripts": {
+    "start": "node lambdaRunner.js --lambdaFunction ./LambdAuthLogin/index --event ./LambdAuthLogin/event-sample"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/healthgrades/LambdAuth.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/healthgrades/LambdAuth/issues"
+  },
+  "homepage": "https://github.com/healthgrades/LambdAuth#readme",
+  "dependencies": {
+    "dotenv": "^1.2.0",
+    "minimist": "^1.1.1"
+  }
+}
